@@ -3,6 +3,9 @@ import pandas as pd
 import sqlite3
 import plotly.express as px
 
+from build_db import build
+build()
+
 st.set_page_config(page_title="Weather Dashboard", layout="wide")
 
 @st.cache_data #prevents data reload
@@ -33,3 +36,6 @@ st.subheader("Temp over time")
 fig=px.line(filtered,x="time",y="temperature_c",color="location_name")
 fig.update_xaxes(tickformat="%b %d %H:%M")
 st.plotly_chart(fig,use_container_width=True)
+
+st.text("This is my dataframe")
+st.dataframe(df_weather)#shows data frame
